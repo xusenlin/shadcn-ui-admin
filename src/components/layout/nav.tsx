@@ -1,18 +1,16 @@
-import React from "react";
 import { Logo } from "./logo.tsx"
-import {cn} from "@/lib/utils"
 import {Button} from "@/components/ui/button"
+import {useAppStore,TabEnum} from "@/store/app.ts";
 
-export function Nav({
-                      className,
-                      ...props
-                    }: React.HTMLAttributes<HTMLElement>) {
+export const Nav = ()=>{
+  const { setTabByIndex,activeTabIndex }  = useAppStore()
+  const classList = (active:boolean)=>{
+    const classes = "text-sm hover:bg-primary/0 font-medium transition-colors "
+    return active ? classes + "hover:text-primary" : classes + "text-muted-foreground hover:text-primary"
+  }
+  
   return (
-      <nav
-          className={cn("flex items-center space-x-4 lg:space-x-6", className)}
-          {...props}
-      >
-
+      <nav className="mx-6 flex items-center space-x-4 lg:space-x-6">
         <Button
             variant="ghost"
             size="icon"
@@ -22,28 +20,32 @@ export function Nav({
         </Button>
 
         <Button
+            onClick={()=>setTabByIndex(TabEnum.Dashboard)}
             variant="ghost"
-            className="text-sm  hover:bg-primary/0 font-medium  transition-colors hover:text-primary"
+            className={classList(activeTabIndex === TabEnum.Dashboard)}
         >
           Dashboard
         </Button>
 
         <Button
+            onClick={()=>setTabByIndex(TabEnum.Repositories)}
             variant="ghost"
-            className="text-sm hover:bg-primary/0 font-medium text-muted-foreground transition-colors hover:text-primary"
+            className={classList(activeTabIndex === TabEnum.Repositories)}
         >
           Repositories
         </Button>
 
         <Button
+            onClick={()=>setTabByIndex(TabEnum.Task)}
             variant="ghost"
-            className="text-sm hover:bg-primary/0 font-medium text-muted-foreground transition-colors hover:text-primary"
+            className={classList(activeTabIndex === TabEnum.Task)}
         >
           Task
         </Button>
         <Button
+            onClick={()=>setTabByIndex(TabEnum.Users)}
             variant="ghost"
-            className="text-sm hover:bg-primary/0 font-medium text-muted-foreground transition-colors hover:text-primary"
+            className={classList(activeTabIndex === TabEnum.Users)}
         >
           Users
         </Button>

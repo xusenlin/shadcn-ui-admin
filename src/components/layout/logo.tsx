@@ -1,4 +1,3 @@
-import React from "react";
 
 export const Logo = () => {
   return (
@@ -19,8 +18,8 @@ export const Logo = () => {
               d="M41.7721,1.0746l-3.5545.5144A1.7685,1.7685,0,0,0,36.74,2.9752q-.3513,1.6709-1.1236,5.4168H46.4092q-1.9573-4.437-2.7639-6.2782A1.7663,1.7663,0,0,0,41.7721,1.0746Z"
               transform="translate(-1.1793 -0.9687)"/>
         {/*style={{animationName: "marewood-running"}}*/}
-        <circle className="eye fill-background"  cx="43.1636" cy="25.1695" r="6.1975"/>
-        <circle className="eye fill-background" cx="75.3906" cy="25.1695" r="6.1975"/>
+        <circle className="eye fill-background" style={{animationName: "marewood-running"}}  cx="43.1636" cy="25.1695" r="6.1975"/>
+        <circle className="eye fill-background" style={{animationName: "marewood-running"}} cx="75.3906" cy="25.1695" r="6.1975"/>
       </svg>
   )
 }
