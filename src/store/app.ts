@@ -14,6 +14,6 @@ export interface AppType {
 
 
 export const useAppStore = create<AppType>((set) => ({
-    activeTabIndex: 0,
+    activeTabIndex: TabEnum.Task,
     setTabByIndex: (index:TabEnum) => set(() => ({ activeTabIndex:index  })),
 }))

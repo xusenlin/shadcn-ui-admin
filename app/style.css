@@ -15,12 +15,6 @@ body {
     width: 100%;
 }
 
-/*.logo .body {*/
-/*    fill: #030712*/
-/*}*/
-/*.logo .eye{*/
-/*  fill: #eee*/
-/*}*/
 
 .logo:hover .eye{
   fill: #4CAF50
@@ -36,4 +30,21 @@ body {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   /*animation-name: marewood-running;*/
+}
+
+.terminal-out{
+    display: flex;
+    flex-direction: column;
+}
+
+.out-content{
+    flex: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-size: 12px;
+    border-radius: 4px;
+    color: #d7d7d7;
+    background: #000;
 }

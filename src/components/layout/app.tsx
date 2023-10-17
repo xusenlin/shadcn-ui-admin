@@ -1,7 +1,7 @@
 import {Nav} from "@/components/layout/nav.tsx"
 import {Account} from "@/components/layout/account.tsx"
 import {Dashboard} from "@/components/pages/dashboard.tsx";
-import {Task} from "@/components/pages/task/task.tsx";
+import {Index} from "@/components/pages/task";
 import {Users} from "@/components/pages/users.tsx";
 
 import { Repositories } from "@/components/pages/repositories.tsx";
@@ -28,7 +28,7 @@ function App() {
             <div className="content text-foregroun">
                 { activeTabIndex === TabEnum.Dashboard && <Dashboard/> }
                 { activeTabIndex === TabEnum.Repositories && <Repositories/> }
-                { activeTabIndex === TabEnum.Task && <Task/> }
+                { activeTabIndex === TabEnum.Task && <Index/> }
                 { activeTabIndex === TabEnum.Users && <Users/> }
             </div>
         </div>

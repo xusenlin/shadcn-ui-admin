@@ -1,7 +1,6 @@
 import {Logo} from "./logo.tsx"
 import {Button} from "@/components/ui/button"
 import {useAppStore, TabEnum} from "@/store/app.ts";
-import {Loader2} from "lucide-react";
 
 export const Nav = () => {
     const {setTabByIndex, activeTabIndex} = useAppStore()
@@ -41,7 +40,6 @@ export const Nav = () => {
                 variant="ghost"
                 className={classList(activeTabIndex === TabEnum.Task)}
             >
-                <Loader2 className="mr-2 h-4 w-4 animate-spin"/>
                 Task
             </Button>
             <Button
