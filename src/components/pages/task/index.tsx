@@ -4,7 +4,6 @@ import { FloatButton  } from "@/components/ui/float-button.tsx"
 import {Pagination} from "@/components/ui/pagination.tsx";
 import {useRef} from "react";
 import {Plus} from "lucide-react";
-import {Button} from "@/components/ui/button.tsx";
 
 export const Index = () => {
 
@@ -25,15 +24,8 @@ export const Index = () => {
           </div>
         </div>
         <TaskForm ref={formRef}/>
-        <FloatButton>
-          <Button
-              onClick={()=>{ formRef.current?.EditForm(null)}}
-              variant="ghost"
-              size="icon"
-              className="hover:bg-primary/0 hover:text-none"
-          >
+        <FloatButton onClick={()=>{ formRef.current?.EditForm(null)}}>
             <Plus size={32} />
-          </Button>
         </FloatButton>
       </>
   )

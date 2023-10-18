@@ -8,6 +8,8 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
+import {forwardRef, useImperativeHandle, useState} from "react";
+import {Task} from "@/api/task.ts";
 const out =  `来自 http://xxxxxx:3000/FrontEndDev/customer_service
             c573a01..990020d  main       -> origin/main
             更新 c573a01..990020d
@@ -50,23 +52,28 @@ const out =  `来自 http://xxxxxx:3000/FrontEndDev/customer_service
             - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
             MareWood:Compiled successfully！！ 👏👏👏👏`
 
-export const TerminalOut = ()=>{
-  return (
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button
-              variant="ghost"
-              size="icon"
-              className="hover:bg-primary/0"
-          >
-            <TerminalSquare size={20} />
-          </Button>
-        </SheetTrigger>
+
+export type TerminalOutType = {
+  Show: (task:Task) => void;
+}
+
+export const TerminalOut = forwardRef<TerminalOutType|undefined>((props, ref)=>{
+  const [open,setOpen] = useState(false)
+  const [task,setTask] = useState<Task>(null)
+
+  const Show = (task:Task) => {
+    setOpen(true)
+    setTask(task)
+  }
+  useImperativeHandle(ref, ()=>({Show}))
+
+  return task && (
+      <Sheet open={open} onOpenChange={v=>{setOpen(v)}}>
         <SheetContent className="terminal-out sm:max-w-[40%]">
           <SheetHeader>
-            <SheetTitle>TaskID:12321</SheetTitle>
+            <SheetTitle>TaskID:{task.id}</SheetTitle>
             <SheetDescription className="flex items-center space-x-6">
-              <span>CommitHash:23242384</span>
+              <span>CommitHash:{task.commitHash}</span>
               <span className="flex items-center space-x-2">
                 <span>Status:</span>
                 <Loader2 size={16} className="animate-spin"/>
@@ -79,4 +86,4 @@ export const TerminalOut = ()=>{
         </SheetContent>
       </Sheet>
   )
-}
+})
