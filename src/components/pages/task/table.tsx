@@ -1,10 +1,11 @@
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.tsx";
-import {Loader2, PlayCircle, SendHorizontal, Share2, Trash2, PencilRuler, TerminalSquare,ArrowDownToLine} from "lucide-react";
+import {Loader2, PlayCircle, SendHorizontal, MoreHorizontal,Share2, Trash2,PencilRuler, TerminalSquare,ArrowDownToLine} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
 import {TerminalOut, TerminalOutType} from "./terminal-out.tsx"
 import {Task} from "@/api/task.ts";
 import {useRef} from "react";
 import {SwitchBranchType, SwitchBranch} from "@/components/pages/task/switch-branch.tsx";
+import {RowActions} from "@/components/pages/task/row-actions.tsx";
 
 const columns = [
   {
@@ -14,6 +15,10 @@ const columns = [
   {
     id: "title",
     title: "Title"
+  },
+  {
+    id: "repositoryId",
+    title: "Repository"
   },
   {
     id: "commitHash",
@@ -53,13 +58,14 @@ const cellProps = {
 }
 
 
-export const TaskTable = (props: { editTask: (task: Task | null) => void }) => {
+export const TaskTable = ({ editTask}) => {
   const switchBranchRef = useRef<SwitchBranchType>();
   const terminalOutRef = useRef<TerminalOutType>();
 
   let tableData: Task[] = [
     {
-      id: "32",
+      id: 32,
+      repositoryId:1,
       title: "【测试环境】运营后台",
       commitHash: "a87d71",
       status: 1,
@@ -71,7 +77,8 @@ export const TaskTable = (props: { editTask: (task: Task | null) => void }) => {
       npmCmd:"npm run build:test"
     },
     {
-      id: "33",
+      id: 33,
+      repositoryId:1,
       title: "【预发布环境】运营后台",
       commitHash: "bc7s76",
       status: 1,
@@ -131,60 +138,14 @@ export const TaskTable = (props: { editTask: (task: Task | null) => void }) => {
                                   </TableCell>
                               );
                           }
-
                         })
                       }
                       <TableCell {...cellProps}>
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            className="hover:bg-primary/0"
-                        >
-                          <SendHorizontal size={20}/>
-                        </Button>
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            className="hover:bg-primary/0"
-                        >
-                          <PlayCircle size={20}/>
-                        </Button>
-
-                        <Button
-                            onClick={() => {
-                              switchBranchRef.current?.Show(22)
-                            }}
-                            variant="ghost"
-                            size="icon"
-                            className="hover:bg-primary/0"
-                        >
-                          <Share2 size={20}/>
-                        </Button>
-                        <Button
-                            variant="ghost"
-                            onClick={() => {
-                              props.editTask(null)
-                            }}
-                            size="icon"
-                            className="hover:bg-primary/0"
-                        >
-                          <PencilRuler size={20}/>
-                        </Button>
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            className="hover:bg-primary/0"
-                        >
-                          <ArrowDownToLine size={20} />
-                        </Button>
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            className="hover:bg-primary/0"
-                        >
-                          <Trash2 size={20}/>
-                        </Button>
-
+                        <RowActions
+                            task={t}
+                            editTask={editTask}
+                            switchBranch={()=>{switchBranchRef.current?.Show(22)}}
+                        />
                       </TableCell>
                     </TableRow>
                 )

@@ -1,11 +1,12 @@
 export type Task = {
-  id?:string
+  id?:number
+  repositoryId:number | null
   title:string
-  commitHash:string
-  status:number
+  commitHash?:string
+  status?:number
   branch:string
-  runCount:number
-  terminalOut:string
+  runCount?:number
+  terminalOut?:string
   remark:string
   buildDir:string
   npmCmd:string
