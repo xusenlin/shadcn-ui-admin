@@ -32,7 +32,7 @@ const initialForm = {
 const TaskForm = forwardRef<TaskFormType | undefined>((props, ref) => {
   const [open, setOpen] = useState(false)
 
-  const [form, setForm] = useState<Task>({...initialForm})
+  const [form, setForm] = useState<Partial<Task>>({...initialForm})
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;

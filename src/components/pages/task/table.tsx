@@ -1,7 +1,8 @@
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@/components/ui/table.tsx";
-import {Loader2, PlayCircle, SendHorizontal, MoreHorizontal,Share2, Trash2,PencilRuler, TerminalSquare,ArrowDownToLine} from "lucide-react";
+import {Loader2, TerminalSquare} from "lucide-react";
 import {Button} from "@/components/ui/button.tsx";
 import {TerminalOut, TerminalOutType} from "./terminal-out.tsx"
+import {AlertDialogType, DeleteDialog} from "./delete-dialog.tsx"
 import {Task} from "@/api/task.ts";
 import {useRef} from "react";
 import {SwitchBranchType, SwitchBranch} from "@/components/pages/task/switch-branch.tsx";
@@ -61,6 +62,7 @@ const cellProps = {
 export const TaskTable = ({ editTask}) => {
   const switchBranchRef = useRef<SwitchBranchType>();
   const terminalOutRef = useRef<TerminalOutType>();
+  const deleteDialogRef = useRef<AlertDialogType>();
 
   let tableData: Task[] = [
     {
@@ -142,8 +144,8 @@ export const TaskTable = ({ editTask}) => {
                       }
                       <TableCell {...cellProps}>
                         <RowActions
-                            task={t}
-                            editTask={editTask}
+                            deleteTask={()=>{deleteDialogRef.current?.Confirm(t.id)}}
+                            editTask={()=>{editTask(t)}}
                             switchBranch={()=>{switchBranchRef.current?.Show(22)}}
                         />
                       </TableCell>
@@ -155,6 +157,7 @@ export const TaskTable = ({ editTask}) => {
         </Table>
         <SwitchBranch ref={switchBranchRef}/>
         <TerminalOut  ref={terminalOutRef}/>
+        <DeleteDialog ref={deleteDialogRef}/>
       </>
 
   )

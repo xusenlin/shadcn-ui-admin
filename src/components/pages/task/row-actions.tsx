@@ -2,6 +2,18 @@ import {Button} from "@/components/ui/button.tsx";
 import {ArrowDownToLine, MoreHorizontal, PencilRuler, PlayCircle, SendHorizontal, Share2, Trash2} from "lucide-react";
 
 import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
@@ -11,7 +23,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export const RowActions = ({task,switchBranch,editTask}) => {
+export const RowActions = ({switchBranch,editTask,deleteTask}) => {
   return (
       <>
         <Button
@@ -61,7 +73,7 @@ export const RowActions = ({task,switchBranch,editTask}) => {
                 <ArrowDownToLine className="mr-2 h-4 w-4" />
                 <span>Download Zip</span>
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={editTask}>
+              <DropdownMenuItem onClick={deleteTask} >
                 <Trash2 className="mr-2 h-4 w-4" />
                 <span>Delete Task</span>
               </DropdownMenuItem>
