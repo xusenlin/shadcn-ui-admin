@@ -1,17 +1,6 @@
 import {Button} from "@/components/ui/button.tsx";
-import {ArrowDownToLine, MoreHorizontal, PencilRuler, PlayCircle, SendHorizontal, Share2, Trash2} from "lucide-react";
+import {ArrowDownToLine, MoreHorizontal,PencilRuler, PlayCircle, SendHorizontal, Share2, Trash2} from "lucide-react";
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
 
 import {
   DropdownMenu,
@@ -23,7 +12,13 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export const RowActions = ({switchBranch,editTask,deleteTask}) => {
+type RowActionsProps = {
+  switchBranch:()=>void
+  editTask:()=>void
+  deleteTask:()=>void
+}
+
+export const RowActions = ({switchBranch,editTask,deleteTask}:RowActionsProps) => {
   return (
       <>
         <Button

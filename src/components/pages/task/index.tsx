@@ -4,6 +4,7 @@ import { FloatButton  } from "@/components/ui/float-button.tsx"
 import {Pagination} from "@/components/ui/pagination.tsx";
 import {useRef} from "react";
 import {Plus} from "lucide-react";
+import {Task} from "@/api/task.ts";
 
 export const Index = () => {
 
@@ -17,7 +18,7 @@ export const Index = () => {
         </div>
         <div className="p-6">
           <div className="rounded-md border">
-            <TaskTable editTask={t=>{ formRef.current?.EditForm(t)}}/>
+            <TaskTable editTask={(t:Task)=>{ formRef.current?.EditForm(t)}}/>
           </div>
           <div className="mt-4">
             <Pagination/>

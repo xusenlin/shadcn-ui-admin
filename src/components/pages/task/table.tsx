@@ -8,9 +8,9 @@ import {useRef} from "react";
 import {SwitchBranchType, SwitchBranch} from "@/components/pages/task/switch-branch.tsx";
 import {RowActions} from "@/components/pages/task/row-actions.tsx";
 
-const columns = [
+const columns:{id:keyof Task,title:string}[]= [
   {
-    id: "id",
+    id:"id",
     title: "ID"
   },
   {
@@ -58,13 +58,16 @@ const cellProps = {
   className: "py-2 px-4 text-center"
 }
 
+type TaskTableProps = {
+  editTask:(task:Task)=>void
+}
 
-export const TaskTable = ({ editTask}) => {
+export const TaskTable = ({ editTask}:TaskTableProps) => {
   const switchBranchRef = useRef<SwitchBranchType>();
   const terminalOutRef = useRef<TerminalOutType>();
   const deleteDialogRef = useRef<AlertDialogType>();
 
-  let tableData: Task[] = [
+  const tableData: Task[] = [
     {
       id: 32,
       repositoryId:1,
