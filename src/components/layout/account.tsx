@@ -15,6 +15,7 @@ import {
   User,
   UserPlus,
   Users,
+    UserCircle2
 } from "lucide-react"
 
 import {
@@ -40,7 +41,7 @@ export const Account = () => {
               variant="ghost"
               className="hover:bg-primary/0 hover:text-primary text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0"
           >
-            <User className="mr-2 h-4 w-4" />
+            <UserCircle2 className="mr-2 h-4 w-4" />
             Admin
           </Button>
         </DropdownMenuTrigger>

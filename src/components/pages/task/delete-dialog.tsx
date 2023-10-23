@@ -16,13 +16,14 @@ export type AlertDialogType = {
   Confirm: (id:number) => void;
 }
 
-const DeleteDialog =  forwardRef<AlertDialogType|undefined>((props, ref)=>{
+const DeleteDialog =  forwardRef<AlertDialogType|undefined>((_, ref)=>{
   const [open,setOpen] = useState(false)
   const [taskId,setTaskId] = useState(0)
 
   const Confirm = (id:number) => {
     setOpen(true)
     setTaskId(id)
+    console.log(taskId)
   }
   useImperativeHandle(ref, ()=>({Confirm}))
   return (

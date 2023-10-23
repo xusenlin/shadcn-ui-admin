@@ -12,7 +12,7 @@ import {
 import {Input} from "@/components/ui/input"
 import {Textarea} from "@/components/ui/textarea"
 import {Label} from "@/components/ui/label"
-import {useState, forwardRef, useImperativeHandle} from "react";
+import {useState, forwardRef, useImperativeHandle, ChangeEvent} from "react";
 import {Task} from "@/api/task.ts";
 
 
@@ -29,12 +29,12 @@ const initialForm = {
   npmCmd: ""
 }
 
-const TaskForm = forwardRef<TaskFormType | undefined>((props, ref) => {
+const TaskForm = forwardRef<TaskFormType | undefined>((_, ref) => {
   const [open, setOpen] = useState(false)
 
   const [form, setForm] = useState<Partial<Task>>({...initialForm})
 
-  const handleFormChange = (event) => {
+  const handleFormChange = (event:ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target;
     setForm((prevForm) => ({ ...prevForm, [name]: value }));
   };

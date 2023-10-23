@@ -1,13 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from '@/components/layout/App.tsx'
-import {Login} from '@/components/pages/login.tsx'
+import App from '@/components/layout/app.tsx'
 import '../app/globals.css'
 import '../app/style.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    {/*<Login/>*/}
     <App />
   </React.StrictMode>,
 )
