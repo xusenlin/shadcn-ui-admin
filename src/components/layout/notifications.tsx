@@ -7,6 +7,27 @@ import {
 
 import {Button} from "@/components/ui/button.tsx";
 
+type ItemType = {
+  icon: JSX.Element,
+  title: string,
+  description: string,
+}
+
+const NotificationItem = ({icon, title, description}:ItemType) => {
+  return (
+      <div
+          className="flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
+        {icon}
+        <div className="space-y-1">
+          <p className="text-sm font-medium leading-none">{title}</p>
+          <p className="text-sm text-muted-foreground">{description}</p>
+        </div>
+      </div>
+  )
+}
+
+
+
 export const Notifications = ()=>{
   return (
       <Popover>
@@ -20,89 +41,16 @@ export const Notifications = ()=>{
             <div className="right-1 top-1 w-1 h-1 rounded absolute animate-ping bg-red-600"></div>
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-80  h-[300px] overflow-y-auto overflow-x-hidden">
-          <div className="grid gap-1">
-            <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
-              <BellIcon className="mt-px h-5 w-5" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Everything</p>
-                <p className="text-sm text-muted-foreground">
-                  Email digest, mentions & all activity.
-                </p>
-              </div>
-            </div>
-            <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 text-accent-foreground hover:bg-accent transition-all">
-              <UserCheck2 className="mt-px h-5 w-5" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Available</p>
-                <p className="text-sm text-muted-foreground">
-                  Only mentions and comments.
-                </p>
-              </div>
-            </div>
-            <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
-              <PackageCheck className="mt-px h-5 w-5" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Ignoring</p>
-                <p className="text-sm text-muted-foreground">
-                  Turn off all notifications.
-                </p>
-              </div>
-            </div>
-            <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
-              <PackageCheck className="mt-px h-5 w-5" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Ignoring</p>
-                <p className="text-sm text-muted-foreground">
-                  Turn off all notifications.
-                </p>
-              </div>
-            </div>
-            <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
-              <PackageCheck className="mt-px h-5 w-5" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Ignoring</p>
-                <p className="text-sm text-muted-foreground">
-                  Turn off all notifications.
-                </p>
-              </div>
-            </div>
-            <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
-              <PackageCheck className="mt-px h-5 w-5" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Ignoring</p>
-                <p className="text-sm text-muted-foreground">
-                  Turn off all notifications.
-                </p>
-              </div>
-            </div>
-            <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
-              <PackageCheck className="mt-px h-5 w-5" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Ignoring</p>
-                <p className="text-sm text-muted-foreground">
-                  Turn off all notifications.
-                </p>
-              </div>
-            </div>
-            <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
-              <PackageCheck className="mt-px h-5 w-5" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Ignoring</p>
-                <p className="text-sm text-muted-foreground">
-                  Turn off all notifications.
-                </p>
-              </div>
-            </div>
-            <div className="-mx-2 flex items-start space-x-4 rounded-md p-2 transition-all hover:bg-accent hover:text-accent-foreground">
-              <PackageCheck className="mt-px h-5 w-5" />
-              <div className="space-y-1">
-                <p className="text-sm font-medium leading-none">Ignoring</p>
-                <p className="text-sm text-muted-foreground">
-                  Turn off all notifications.
-                </p>
-              </div>
-            </div>
+        <PopoverContent className="w-[340px] mr-2">
+          <div className="flex justify-center items-center mb-2 text-muted-foreground">Notifications(10)</div>
+          <div className="max-h-[300px] overflow-y-auto overflow-x-hidden">
+            <NotificationItem title="Everything" description="Email digest, mentions & all activity." icon={<BellIcon className="mt-px h-5 w-5" />}/>
+            <NotificationItem title="Everything" description="Email digest, mentions & all activity." icon={<BellIcon className="mt-px h-5 w-5" />}/>
+            <NotificationItem title="Everything" description="Email digest, mentions & all activity." icon={<UserCheck2 className="mt-px h-5 w-5" />}/>
+            <NotificationItem title="Everything" description="Email digest, mentions & all activity." icon={<BellIcon className="mt-px h-5 w-5" />}/>
+            <NotificationItem title="Everything" description="Email digest, mentions & all activity." icon={<PackageCheck className="mt-px h-5 w-5" />}/>
+            <NotificationItem title="Everything" description="Email digest, mentions & all activity." icon={<PackageCheck className="mt-px h-5 w-5" />}/>
+            <NotificationItem title="Everything" description="Email digest, mentions & all activity." icon={<BellIcon className="mt-px h-5 w-5" />}/>
           </div>
         </PopoverContent>
       </Popover>
